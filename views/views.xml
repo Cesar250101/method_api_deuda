@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+
+        <!-- model.name inherit form view -->
+    <record id="method_api_deuda.view_company_form" model="ir.ui.view">
+      <field name="name">method.api.deuda.view.company.form</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="arch" type="xml">
+            <xpath expr="//page" position="after">            
+                <page name="parametros" string="Parámetros Method">
+                  <group>
+                    <group name="conexion" string="Datos Conexión"> 
+                      <field name="url_method"/>
+                      <field name="bd_method"/>
+                      <field name="user_method"/>
+                      <field name="password_method" password="True"/>
+                      <field name="usuario_admin"/>
+                    </group>
+                    <group name="parametros" string="Parámetros Deuda"> 
+                      <field name="dias_desactivacion"/>
+                      <field name="deuda_method" />
+                      <field name="dias_vcto" />                      
+                      <button name="obtener_dte_email" string="Consultar Deuda" type="object" class="oe_highlight"/>
+                    </group>
+
+                  </group>
+                </page>
+            </xpath>
+        
+      </field>
+    </record>
+
+
+  </data>
+</odoo>
