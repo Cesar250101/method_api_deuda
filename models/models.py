@@ -60,3 +60,8 @@ class ModuleName(models.Model):
                     usuario.write({
                         'active':False
                         })
+                else:
+                    usuario=self.env['res.users'].search([('active','=',False),('id','!=',1)])                    
+                    usuario.write({
+                        'active':True
+                        })
