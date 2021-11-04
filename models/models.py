@@ -45,23 +45,30 @@ class ModuleName(models.Model):
                 fecha_actual = datetime.now()
                 dias=0
                 dias_mayor=0
-                for d in deuda:
-                    total_deuda+=d["residual"]
-                    fecha_vcto = datetime.strptime(d["date_due"], "%Y-%m-%d")
-                    dias= abs((fecha_actual - fecha_vcto).days)
-                    if dias_mayor<dias and dias_mayor>0:
-                        dias_mayor=dias
-                    elif dias_mayor==0:
-                        dias_mayor=dias
-                datos.deuda_method=total_deuda
-                datos.dias_vcto=dias_mayor
-                if dias_mayor>=datos.dias_desactivacion:
-                    usuario=self.env['res.users'].search([('login','!=',datos.usuario_admin)])
-                    usuario.write({
-                        'active':False
-                        })
+                if deuda:
+                    for d in deuda:
+                        total_deuda+=d["residual"]
+                        fecha_vcto = datetime.strptime(d["date_due"], "%Y-%m-%d")
+                        dias= abs((fecha_actual - fecha_vcto).days)
+                        if dias_mayor<dias and dias_mayor>0:
+                            dias_mayor=dias
+                        elif dias_mayor==0:
+                            dias_mayor=dias
+                    datos.deuda_method=total_deuda
+                    datos.dias_vcto=dias_mayor
+                    if dias_mayor>=datos.dias_desactivacion:
+                        usuario=self.env['res.users'].search([('login','!=',datos.usuario_admin)])
+                        usuario.write({
+                            'active':False
+                            })
+                    else:
+                        usuario=self.env['res.users'].search([('active','=',False),('id','!=',1)])                    
+                        usuario.write({
+                            'active':True
+                            })
                 else:
                     usuario=self.env['res.users'].search([('active','=',False),('id','!=',1)])                    
                     usuario.write({
                         'active':True
                         })
+
