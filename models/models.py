@@ -16,17 +16,18 @@ class ModuleName(models.Model):
     usuario_admin = fields.Char(string='Usuario Administrador', default="cesar@method.cl")    
     
 
-    @api.one
+    @api.model
     def obtener_dte_email(self):
-        url = self.url_method
-        db = self.bd_method
-        username = self.user_method
-        password = self.password_method
+        datos=self.search([('id','=',1)])
+        url = datos.url_method
+        db = datos.bd_method
+        username = datos.user_method
+        password = datos.password_method
         
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
         uid = common.authenticate(db, username, password, {})
-        rut_partner=self.vat
+        rut_partner=datos.vat
         if rut_partner:
             partner_id=models.execute_kw(db, uid, password,
                 'res.partner', 'search_read',
@@ -52,10 +53,10 @@ class ModuleName(models.Model):
                         dias_mayor=dias
                     elif dias_mayor==0:
                         dias_mayor=dias
-                self.deuda_method=total_deuda
-                self.dias_vcto=dias_mayor
-                if dias_mayor>=self.dias_desactivacion:
-                    usuario=self.env['res.users'].search([('login','!=',self.usuario_admin)])
+                datos.deuda_method=total_deuda
+                datos.dias_vcto=dias_mayor
+                if dias_mayor>=datos.dias_desactivacion:
+                    usuario=self.env['res.users'].search([('login','!=',datos.usuario_admin)])
                     usuario.write({
                         'active':False
                         })
