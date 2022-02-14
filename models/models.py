@@ -16,7 +16,7 @@ class ModuleName(models.Model):
     usuario_admin = fields.Char(string='Usuario Administrador', default="cesar@method.cl")    
     
 
-    @api.model
+    @api.one
     def obtener_dte_email(self):
         datos=self.search([('id','=',1)])
         url = datos.url_method
