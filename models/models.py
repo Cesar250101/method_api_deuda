@@ -6,7 +6,7 @@ from datetime import datetime
 
 class ModuleName(models.Model):
     _inherit = 'res.company'
-    url_method = fields.Char(string='URL Servidor Method',default="http://3.129.134.37:8069")
+    url_method = fields.Char(string='URL Servidor Method',default="http://erp.method.cl")
     bd_method=fields.Char(string='Base de Datos Method',default="method")
     user_method=fields.Char(string='Usuario Method',default="cesar@method.cl")
     password_method=fields.Char(string='Password Usuario Method',default="2010")
