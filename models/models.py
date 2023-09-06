@@ -39,7 +39,8 @@ class ModuleName(models.Model):
                 'account.invoice', 'search_read',
                 [[['commercial_partner_id', '=', partner_id],
                     ['type','=','out_invoice'],
-                    ['state','=','open']]],
+                    ['name','=','Suscripcion'],
+                    ['state','=','open']]],                    
                 [])
                 total_deuda=0
                 fecha_actual = datetime.now()
