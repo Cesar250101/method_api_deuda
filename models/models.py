@@ -68,6 +68,8 @@ class ModuleName(models.Model):
                             'active':True
                             })
                 else:
+                    datos.deuda_method=total_deuda
+                    datos.dias_vcto=dias_mayor                    
                     usuario=self.env['res.users'].search([('active','=',False),('id','!=',1)])                    
                     usuario.write({
                         'active':True
