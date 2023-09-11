@@ -17,7 +17,7 @@ class ModuleName(models.Model):
     
 
     @api.one
-    def obtener_dte_email(self):
+    def obtener_deuda_method(self):
         datos=self.search([('id','=',1)])
         url = datos.url_method
         db = datos.bd_method

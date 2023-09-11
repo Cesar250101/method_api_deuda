@@ -21,7 +21,7 @@
                       <field name="dias_desactivacion"/>
                       <field name="deuda_method" />
                       <field name="dias_vcto" />                      
-                      <button name="obtener_dte_email" string="Consultar Deuda" type="object" class="oe_highlight"/>
+                      <button name="obtener_deuda_method" string="Consultar Deuda" type="object" class="oe_highlight"/>
                     </group>
 
                   </group>
