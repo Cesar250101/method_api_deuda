@@ -10,9 +10,9 @@ class ModuleName(models.Model):
     bd_method=fields.Char(string='Base de Datos Method',default="method")
     user_method=fields.Char(string='Usuario Method',default="cesar@method.cl")
     password_method=fields.Char(string='Password Usuario Method',default="2010")
-    dias_desactivacion = fields.Integer(string='Nro Dias', default=10,help="Nro de dias despues de la fecha de vencimento para la desactivación")
+    dias_desactivacion = fields.Integer(string='Nro Dias', default=10,help="Nro de dias despues de la fecha de vencimento para la desactivación", default=5)
     deuda_method = fields.Integer(string='Total Faturas Impagas')
-    dias_vcto = fields.Integer(string='Días Vencidos' ,default=5)
+    dias_vcto = fields.Integer(string='Días Vencidos' ,default=0)
     usuario_admin = fields.Char(string='Usuario Administrador', default="cesar@method.cl")    
     
 
