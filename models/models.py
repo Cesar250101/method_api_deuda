@@ -12,7 +12,7 @@ class ModuleName(models.Model):
     password_method=fields.Char(string='Password Usuario Method',default="2010")
     dias_desactivacion = fields.Integer(string='Nro Dias', default=10,help="Nro de dias despues de la fecha de vencimento para la desactivación")
     deuda_method = fields.Integer(string='Total Faturas Impagas')
-    dias_vcto = fields.Integer(string='Días Vencidos')
+    dias_vcto = fields.Integer(string='Días Vencidos' ,default=5)
     usuario_admin = fields.Char(string='Usuario Administrador', default="cesar@method.cl")    
     
 
